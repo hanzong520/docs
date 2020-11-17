@@ -261,4 +261,57 @@ ID: orange2020
 
 > 简化docker的启动停止流程，编排docker启动服务与服务之间的关系
 
-下载地址：https://github.com/docker/compose
+## docker-compose安装
+
+```shell
+curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+chmod +x /usr/local/bin/docker-compose
+
+# 验证是否安装成功
+sh-3.2# ./docker-compose version
+docker-compose version 1.25.1, build a82fef07
+docker-py version: 4.1.0
+CPython version: 3.7.4
+OpenSSL version: OpenSSL 1.1.1c  28 May 2019
+sh-3.2#
+```
+
+## docker-compose 使用
+
+> 编写vi docker-compose.yaml文件
+
+``` shell
+root@iZ2zebc0dctm6mo0zm3v85Z tomcat]# vi docker-compose.yaml
+```
+
+> 文件内容如下：
+
+``` shell
+version: '3.1'
+service:
+  tomcat: 
+    restart:always
+    image: tomcat
+    container_name: tomcat
+    ports:
+       - 9090:8080
+```
+
+``` shell
+
+[root@iZ2zebc0dctm6mo0zm3v85Z tomcat]# vi ./docker-compose.yaml 
+
+# 启动tomcat-使用docker-compose
+[root@iZ2zebc0dctm6mo0zm3v85Z tomcat]# docker-compose up
+Recreating tomcat ... done
+Attaching to tomcat
+tomcat    | NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+```
+
+> 下线
+
+``` shell
+docker-compose down
+```
+

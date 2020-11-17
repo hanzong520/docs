@@ -20,3 +20,21 @@ $ lsb_release -cs
 $ tee /etc/redis/redis.conf
 ```
 
+3、查看主机名
+
+``` shell
+hosenamectl
+```
+
+
+
+## 配置IP地址
+
+修改IP地址
+
+``` shell
+vi /etc/netplan/50.clound.init.yaml
+
+netplan apply
+```
+
